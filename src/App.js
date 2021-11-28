@@ -8,7 +8,8 @@ class App extends Component {
               bio:"",
               imgSrc:"", 
               profession:""},
-              show:true
+              show:true,
+              seconds:0,
   };
 
 renderPerson = () => {
@@ -38,9 +39,19 @@ renderPerson = () => {
        </div>
        </div>)}
        <button onClick={this.renderPerson}>click me</button>
+       <p>This component was mounted {this.state.seconds}s ago</p>
         
       </div>
     )
+  }
+  time() {
+    this.setState((prevState) => ({
+      seconds: prevState.seconds + 1,
+    }));
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => this.time(), 1000);
   }
 
 }
