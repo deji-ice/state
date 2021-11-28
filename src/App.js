@@ -1,25 +1,48 @@
-import logo from './logo.svg';
 import './App.css';
+import picss from './jackson-david-iwwx0ZLYNIo-unsplash.jpg';
+import React, { Component } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    person: { fullName:"",
+              bio:"",
+              imgSrc:"", 
+              profession:""},
+              show:true
+  };
+
+renderPerson = () => {
+      this.setState ({
+        person:{
+          fullName:"Atanda Ayodeji",
+              bio:"I love Chelsea",
+              imgSrc:{picss}, 
+              profession:"Full Stack",
+              },
+              show: !this.state.show
+
+        },
+      )
+};
+
+  render() {
+    return (
+
+      <div className="App">
+        {this.state.show &&(
+          <div>
+       <h2> {this.state.person.fullName}</h2>
+       <h2>{this.state.person.bio}</h2>
+       <h2>{this.state.person.profession}</h2>
+       <div><img src={this.state.person.imgSrc.picss} alt='hiii'/>
+       </div>
+       </div>)}
+       <button onClick={this.renderPerson}>click me</button>
+        
+      </div>
+    )
+  }
+
 }
 
 export default App;
